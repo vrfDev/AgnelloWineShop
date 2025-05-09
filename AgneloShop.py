@@ -94,6 +94,6 @@ if idade >= 18:
         total - R$ {carrinho:.2f}
         Endereço - {endereco}
         ======================
-    Agnello-> {nome}, Muito obrigado por comprar com a gente!! Até a próxima!!""")
+    Agnello-> {nome}, Muito obrigado por comprar com a gente!! Até a próxima!!!""")
 else:
     print(f"{nome}, a venda de bebidas alcoolicas para menores de idade não é permitida!!")
