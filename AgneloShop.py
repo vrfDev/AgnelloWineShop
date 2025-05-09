@@ -1,134 +1,99 @@
-print(" SEJA BEM VINDO A VINHERIA AGNELLO")
-print("***********************************")
+print("===Seja bem-vindo(a)==")
 
-ano = 2025
+nome = input("Agnello-> Como devemos te chamar?\n->")
 
-nascimento = input("Digite seu ano de nascimento:")
-while not nascimento.isnumeric():
-    print("Inválido")
-    idade = input("Digite seu ano de nascimento:")
-nascimento = int(nascimento)
+ano = input(f"{nome}, por favor digite seu ano de nascimento: \n->")
 
-idade = ano - nascimento
-if idade < 18:
-    print("Você não tem idade para acessar o nosso site!! ")
-else:
-    print("    -- Boas compras --    ")
-    print("--------------------------")
-    print("      VINHOS DA CASA      ")
-    print("--------------------------")
+while not ano.isnumeric():
+    print("!!RESPOSTA INVÁLIDA!!!")
+    ano = input(f"{nome}, por favor digite seu ano de nascimento: \n->")
 
-    vinho1 = "Pérgola"
-    vinho2 = "Tinto"
-    vinho3 = "Rosé"
-    valor1 = 100
-    valor2 = 200
-    valor3 = 300
+idade = 2025 - int(ano)
 
+vinho_1 = "Adamantino"
+vinho_2 = "Tarantino"
+vinho_3 = "Pescalino"
 
-    print("Digite qual vinho você deseja - Seguem as opções a baixo!")
+preco_vinho_1 = 50
+preco_vinho_2 = 60
+preco_vinho_3 = 230
 
+qtn_vinho_1 = 0
+qtn_vinho_2 = 0
+qtn_vinho_3 = 0
+
+frete = 5.00
+promo = 500
+
+sair = 'sair'
+comprar = 'continuar'
+
+if idade >= 18:
+    carrinho = 0
     while True:
-        escolha = input(f"-{vinho1} R${valor1}\n"
-                        f"-{vinho2} R${valor2}\n"
-                        f"-{vinho3} R${valor3}\n"
-                        f"-Qual você deseja: ")
+        print(f"Carrinho: R${carrinho:.2f}")
 
-        vinhos = [vinho1, vinho2, vinho3]
+        print(f"""Agnello-> Este é o nosso menu:
+            =========MENU========
+            R${preco_vinho_1:.2f} - {vinho_1} |
+            R${preco_vinho_2:.2f} - {vinho_2}  |
+            R${preco_vinho_3:.2f} - {vinho_3} |
+            ======================
+        """)
+        pedido = input("Agnello-> Digite sua escolha de vinho\n->").lower()
 
-        if escolha in vinhos:
-            print("Adicionado ao carrinho!!")
-            break
+        while not (pedido == vinho_1.lower() or pedido == vinho_2.lower() or pedido == vinho_3.lower()):
+            print("Só serão aceitos os itens presentes em nosso menu!!")
+            pedido = input("Agnello-> Digite sua escolha de vinho\n->").lower()
+
+        qnt = input("Agnello-> Quantas garrafas você deseja?\n->")
+
+        while not qnt.isnumeric():
+            print("!!RESPOSTA INVÁLIDA!!!")
+            qnt = input("Agnello-> Quantas garrafas você deseja?\n->")
+
+        qnt = int(qnt)
+        compra = qnt
+
+        if pedido == vinho_1.lower():
+            compra *= preco_vinho_1
+            qtn_vinho_1 += qnt
+        elif pedido == vinho_2.lower():
+            compra *= preco_vinho_2
+            qtn_vinho_2 += qnt
         else:
-            print("Inválido")
+            compra *= preco_vinho_3
+            qtn_vinho_3 += qnt
 
-    quantidade = input("Quantas garrafas você deseja comprar: ")
-    while not quantidade.isnumeric():
-        print("Inválido")
-        quantidade = input("Quantas garrafas você deseja comprar: ")
-    quantidade = int(quantidade)
-    print("Adicionado ao carrinho!!")
+        carrinho += compra
 
-    if escolha == vinho1:
-        preco = valor1 * quantidade
-    elif escolha == vinho2:
-        preco = valor2 * quantidade
+        finalizar = input("Agnello-> Deseja continuar a compra? (Digite 'sair' ou 'continuar')\n->").lower()
+
+        while not (finalizar == comprar or finalizar == sair):
+            print("!!RESPOSTA INVÁLIDA!!!")
+            finalizar = input("Agnello-> Deseja continuar a compra? (Digite 'sair' ou 'continuar')\n->")
+
+        if finalizar == comprar:
+            continue
+        else:
+           break
+
+    endereco = input("Agnello-> Digite seu endereço\n->")
+    if carrinho > promo:
+        print("VOCÊ GANHOU FRETE GRÁTIS!!!")
+        frete = 0
     else:
-        preco = valor3 * quantidade
+        carrinho += frete
 
-    valor_final = preco
-    frete = 25
-    localidade = input("Confirme o seu endereço para entrega: ")
-    Total = valor_final + frete
-
-    print("-------------------------------")
-    continuar = input("Você deseja continuar a compra? Digite Sim ou Não!\n"
-                      "- ")
-
-    if continuar == "Não":
-        if valor_final > 500:
-            print("Frete Grátis!!")
-            print(f"O valor total da sua compra foi de R${valor_final}, e será entregue no endereço {localidade}.")
-        else:
-            print("-------------------------------")
-            print(f"O valor total da sua compra foi de R${valor_final} mais o frete de {frete}, totalizando R${Total} e será entregue no endereço {localidade}.")
-            print("Muito Obrigado pela sua compra!!")
-
- #-------------------------------------------------------
-
-    else:
-
-        print("    -- Boas compras --    ")
-        print("--------------------------")
-        print("      VINHOS DA CASA      ")
-        print("--------------------------")
-
-        vinho1 = "Pérgola"
-        vinho2 = "Tinto"
-        vinho3 = "Rosé"
-        valor1 = 100
-        valor2 = 200
-        valor3 = 300
-
-        print("Digite qual vinho você deseja - Seguem as opções a baixo!")
-
-        while True:
-            escolha = input(f"-{vinho1} R${valor1}\n"
-                            f"-{vinho2} R${valor2}\n"
-                            f"-{vinho3} R${valor3}\n"
-                            f"-Qual você deseja: ")
-
-            vinhos = [vinho1, vinho2, vinho3]
-
-            if escolha in vinhos:
-                print("Adicionado ao carrinho!!")
-                break
-            else:
-                print("Inválido")
-
-        quantidade = input("Quantas garrafas você deseja comprar: ")
-        while not quantidade.isnumeric():
-            print("Inválido")
-            quantidade = input("Quantas garrafas você deseja comprar: ")
-        quantidade = int(quantidade)
-        print("Adicionado ao carrinho!!")
-
-        if escolha == vinho1:
-            price = valor1 * quantidade
-        elif escolha == vinho2:
-            price = valor2 * quantidade
-        else:
-            price = valor3 * quantidade
-
-
-        valorFinal = valor_final + price
-        frete = 25
-        total = valorFinal + frete
-
-        if valorFinal > 500:
-            print("Frete Grátis!!")
-            print(f"O valor total da sua compra foi de R${valorFinal}, e será entregue no endereço {localidade}.")
-        else:
-            print("-------------------------------")
-            print(f"O valor total da sua compra foi de R${valorFinal} mais o frete de {frete}, totalizando R${total} e será entregue no endereço {localidade}.")
-            print("Muito Obrigado pela sua compra!!")
+    print(f"""
+        =========Carrinho========
+        {vinho_1} - {qtn_vinho_1} |
+        {vinho_2} - {qtn_vinho_2} |
+        {vinho_3} - {qtn_vinho_3} |
+        frete - R$ {frete}
+        total - R$ {carrinho:.2f}
+        Endereço - {endereco}
+        ======================
+    Agnello-> {nome}, Muito obrigado por comprar com a gente!! Até a próxima!!""")
+else:
+    print(f"{nome}, a venda de bebidas alcoolicas para menores de idade não é permitida!!")
